@@ -44,12 +44,12 @@
       "properties": {
         "prettyMarkdown.fontFamily": {
           "type": "string",
-          "default": "",
+          "default": "Montserrat, sans-serif",
           "description": "Font family for body text in the preview. Leave empty to use theme default."
         },
         "prettyMarkdown.headingFontFamily": {
           "type": "string",
-          "default": "",
+          "default": "Montserrat, sans-serif",
           "description": "Font family for headings in the preview. Leave empty to use theme default."
         },
         "prettyMarkdown.codeFontFamily": {

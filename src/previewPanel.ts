@@ -205,9 +205,6 @@ export class PreviewPanel {
       --pad: 2rem 3.5rem;
       --editor-font: ${userCodeFont || editorFontFamily || "'SF Mono', Consolas, monospace"};
       --editor-font-size: ${userCodeFontSize ? `${userCodeFontSize}px` : `${editorFontSize * 0.92}px`};
-      ${userBodyFont ? `--font-body: ${userBodyFont};` : ''}
-      ${userBodyFont ? `--font-sans: ${userBodyFont};` : ''}
-      ${userHeadingFont ? `--font-display: ${userHeadingFont};` : ''}
       ${userFontSize ? `--body-font-size: ${userFontSize}px;` : ''}
     }
 
@@ -1140,6 +1137,13 @@ export class PreviewPanel {
   <style id="theme-clean">${cleanCss}</style>
   <style id="theme-editorial">${editorialCss}</style>
   <style id="theme-terminal">${terminalCss}</style>
+  <style>
+    :root[data-theme][data-mode] {
+      ${userBodyFont ? `--font-body: ${userBodyFont};` : ''}
+      ${userBodyFont ? `--font-sans: ${userBodyFont};` : ''}
+      ${userHeadingFont ? `--font-display: ${userHeadingFont};` : ''}
+    }
+  </style>
   <script src="${mermaidUri}"></script>
 </head>
 <body>
