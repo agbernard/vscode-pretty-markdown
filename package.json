@@ -1,0 +1,103 @@
+{
+  "name": "pretty-markdown",
+  "displayName": "Pretty Markdown",
+  "description": "Beautiful markdown preview with multiple themes, dark/light toggle, and sidebar table of contents navigation.",
+  "version": "0.0.1",
+  "publisher": "abernard",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "prettyMarkdown.openPreview",
+        "title": "Pretty Markdown: Open Preview"
+      },
+      {
+        "command": "prettyMarkdown.switchTheme",
+        "title": "Pretty Markdown: Switch Theme"
+      },
+      {
+        "command": "prettyMarkdown.toggleDarkMode",
+        "title": "Pretty Markdown: Toggle Dark/Light Mode"
+      },
+      {
+        "command": "prettyMarkdown.toggleFullscreen",
+        "title": "Pretty Markdown: Toggle Fullscreen"
+      }
+    ],
+    "configuration": {
+      "title": "Pretty Markdown",
+      "properties": {
+        "prettyMarkdown.fontFamily": {
+          "type": "string",
+          "default": "",
+          "description": "Font family for body text in the preview. Leave empty to use theme default."
+        },
+        "prettyMarkdown.headingFontFamily": {
+          "type": "string",
+          "default": "",
+          "description": "Font family for headings in the preview. Leave empty to use theme default."
+        },
+        "prettyMarkdown.codeFontFamily": {
+          "type": "string",
+          "default": "",
+          "description": "Font family for code blocks in the preview. Leave empty to use editor.fontFamily."
+        },
+        "prettyMarkdown.fontSize": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 40,
+          "description": "Font size in pixels for body text. Set to 0 to use theme default."
+        },
+        "prettyMarkdown.codeFontSize": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 40,
+          "description": "Font size in pixels for code blocks. Set to 0 to use editor font size."
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "prettyMarkdown.openPreview",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v",
+        "when": "editorLangId == markdown || resourceExtname =~ /\\.(md|mkd|mdwn|mdown|markdown|mdx)/i"
+      }
+    ]
+  },
+  "scripts": {
+    "copy:mermaid": "mkdir -p vendor && cp node_modules/mermaid/dist/mermaid.min.js vendor/mermaid.min.js",
+    "vscode:prepublish": "npm run copy:mermaid && npm run bundle",
+    "bundle": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "watch:bundle": "npm run bundle -- --watch",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.28.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0",
+    "mermaid": "^11.14.0"
+  }
+}

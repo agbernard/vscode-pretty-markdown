@@ -1,0 +1,453 @@
+/* ===== Terminal Theme — Hacker-native, code-heavy, IBM Plex ===== */
+
+
+/* ── Light palette ── */
+[data-theme="terminal"][data-mode="light"] {
+  --bg: #f6f8fa;
+  --bg-subtle: #ebeef2;
+  --surface-elevated: #eef1f5;
+  --ink: #1f2937;
+  --ink-body: #4b5563;
+  --ink-soft: #9ca3af;
+  --border: rgba(0,0,0,0.1);
+  --link: #16a34a;
+  --accent: #16a34a;
+  --accent-dim: #bbf7d0;
+  --accent-bg: rgba(22,163,74,0.04);
+  --accent-border: rgba(22,163,74,0.15);
+  --sidebar-bg: #eff1f5;
+  --hover-bg: #e4e7ed;
+  --active-bg: rgba(22,163,74,0.08);
+  --active-text: #16a34a;
+  --btn-bg: #ebeef2;
+  --code-bg: rgba(22,163,74,0.06);
+  --pre-bg: #eef1f5;
+  --blockquote-bg: rgba(22,163,74,0.04);
+  --th-bg: #ebeef2;
+  --tr-even-bg: #f0f2f6;
+
+  --alert-note-bg: rgba(8,145,178,0.06);
+  --alert-note-border: #0891a3;
+  --alert-note-ink: #0e7a8a;
+  --alert-tip-bg: rgba(22,163,74,0.06);
+  --alert-tip-border: #16a34a;
+  --alert-tip-ink: #15803d;
+  --alert-warning-bg: rgba(217,119,6,0.08);
+  --alert-warning-border: #d97706;
+  --alert-warning-ink: #b45309;
+  --alert-caution-bg: rgba(220,38,38,0.06);
+  --alert-caution-border: #dc2626;
+  --alert-caution-ink: #b91c1c;
+  --alert-important-bg: rgba(190,24,93,0.06);
+  --alert-important-border: #be185d;
+  --alert-important-ink: #9f1758;
+
+  --font-display: 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+}
+
+/* ── Dark palette ── */
+[data-theme="terminal"][data-mode="dark"] {
+  --bg: #0a0e14;
+  --bg-subtle: #0f1319;
+  --surface-elevated: #0d1117;
+  --ink: #c5d0de;
+  --ink-body: #8b98ab;
+  --ink-soft: #4a5568;
+  --border: rgba(57,211,83,0.12);
+  --link: #39d353;
+  --accent: #39d353;
+  --accent-dim: #1a3a22;
+  --accent-bg: rgba(57,211,83,0.05);
+  --accent-border: rgba(57,211,83,0.18);
+  --sidebar-bg: #080c10;
+  --hover-bg: #131920;
+  --active-bg: rgba(57,211,83,0.08);
+  --active-text: #39d353;
+  --btn-bg: #0f1319;
+  --code-bg: rgba(57,211,83,0.06);
+  --pre-bg: #0d1117;
+  --blockquote-bg: rgba(57,211,83,0.03);
+  --th-bg: #0f1319;
+  --tr-even-bg: #0b0f15;
+
+  --alert-note-bg: rgba(34,211,238,0.08);
+  --alert-note-border: rgba(34,211,238,0.5);
+  --alert-note-ink: #22d3ee;
+  --alert-tip-bg: rgba(57,211,83,0.08);
+  --alert-tip-border: rgba(57,211,83,0.5);
+  --alert-tip-ink: #39d353;
+  --alert-warning-bg: rgba(251,191,36,0.10);
+  --alert-warning-border: rgba(251,191,36,0.55);
+  --alert-warning-ink: #fbbf24;
+  --alert-caution-bg: rgba(248,113,113,0.10);
+  --alert-caution-border: rgba(248,113,113,0.55);
+  --alert-caution-ink: #f87171;
+  --alert-important-bg: rgba(244,114,182,0.08);
+  --alert-important-border: rgba(244,114,182,0.5);
+  --alert-important-ink: #f472b6;
+
+  --font-display: 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+}
+
+/* ── System preference (no explicit mode) ── */
+@media (prefers-color-scheme: light) {
+  [data-theme="terminal"]:not([data-mode]) {
+    --bg: #f6f8fa;
+    --bg-subtle: #ebeef2;
+    --surface-elevated: #eef1f5;
+    --ink: #1f2937;
+    --ink-body: #4b5563;
+    --ink-soft: #9ca3af;
+    --border: rgba(0,0,0,0.1);
+    --link: #16a34a;
+    --accent: #16a34a;
+    --accent-dim: #bbf7d0;
+    --accent-bg: rgba(22,163,74,0.04);
+    --accent-border: rgba(22,163,74,0.15);
+    --sidebar-bg: #eff1f5;
+    --hover-bg: #e4e7ed;
+    --active-bg: rgba(22,163,74,0.08);
+    --active-text: #16a34a;
+    --btn-bg: #ebeef2;
+    --code-bg: rgba(22,163,74,0.06);
+    --pre-bg: #eef1f5;
+    --blockquote-bg: rgba(22,163,74,0.04);
+    --th-bg: #ebeef2;
+    --tr-even-bg: #f0f2f6;
+
+    --alert-note-bg: rgba(8,145,178,0.06);
+    --alert-note-border: #0891a3;
+    --alert-note-ink: #0e7a8a;
+    --alert-tip-bg: rgba(22,163,74,0.06);
+    --alert-tip-border: #16a34a;
+    --alert-tip-ink: #15803d;
+    --alert-warning-bg: rgba(217,119,6,0.08);
+    --alert-warning-border: #d97706;
+    --alert-warning-ink: #b45309;
+    --alert-caution-bg: rgba(220,38,38,0.06);
+    --alert-caution-border: #dc2626;
+    --alert-caution-ink: #b91c1c;
+    --alert-important-bg: rgba(190,24,93,0.06);
+    --alert-important-border: #be185d;
+    --alert-important-ink: #9f1758;
+
+    --font-display: 'IBM Plex Mono', monospace;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="terminal"]:not([data-mode]) {
+    --bg: #0a0e14;
+    --bg-subtle: #0f1319;
+    --surface-elevated: #0d1117;
+    --ink: #c5d0de;
+    --ink-body: #8b98ab;
+    --ink-soft: #4a5568;
+    --border: rgba(57,211,83,0.12);
+    --link: #39d353;
+    --accent: #39d353;
+    --accent-dim: #1a3a22;
+    --accent-bg: rgba(57,211,83,0.05);
+    --accent-border: rgba(57,211,83,0.18);
+    --sidebar-bg: #080c10;
+    --hover-bg: #131920;
+    --active-bg: rgba(57,211,83,0.08);
+    --active-text: #39d353;
+    --btn-bg: #0f1319;
+    --code-bg: rgba(57,211,83,0.06);
+    --pre-bg: #0d1117;
+    --blockquote-bg: rgba(57,211,83,0.03);
+    --th-bg: #0f1319;
+    --tr-even-bg: #0b0f15;
+
+    --alert-note-bg: rgba(34,211,238,0.08);
+    --alert-note-border: rgba(34,211,238,0.5);
+    --alert-note-ink: #22d3ee;
+    --alert-tip-bg: rgba(57,211,83,0.08);
+    --alert-tip-border: rgba(57,211,83,0.5);
+    --alert-tip-ink: #39d353;
+    --alert-warning-bg: rgba(251,191,36,0.10);
+    --alert-warning-border: rgba(251,191,36,0.55);
+    --alert-warning-ink: #fbbf24;
+    --alert-caution-bg: rgba(248,113,113,0.10);
+    --alert-caution-border: rgba(248,113,113,0.55);
+    --alert-caution-ink: #f87171;
+    --alert-important-bg: rgba(244,114,182,0.08);
+    --alert-important-border: rgba(244,114,182,0.5);
+    --alert-important-ink: #f472b6;
+
+    --font-display: 'IBM Plex Mono', monospace;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  }
+}
+
+/* ── Terminal typography ── */
+body { font-family: var(--font-body); }
+.sidebar, .toolbar { font-family: var(--font-sans); }
+
+[data-theme="terminal"] .content-inner { font-size: var(--body-font-size, 0.95rem); line-height: 1.75; }
+
+[data-theme="terminal"] .content-inner h1,
+[data-theme="terminal"] .content-inner h2,
+[data-theme="terminal"] .content-inner h3,
+[data-theme="terminal"] .content-inner h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+[data-theme="terminal"] .content-inner h1 { font-size: 1.6rem; }
+[data-theme="terminal"] .content-inner h2 { font-size: 1.3rem; border-bottom: none; }
+[data-theme="terminal"] .content-inner h3 { font-size: 1.1rem; }
+
+/* Headings show ## prefix */
+[data-theme="terminal"] .content-inner h1::before { content: "# "; color: var(--accent); font-weight: 400; }
+[data-theme="terminal"] .content-inner h2::before { content: "## "; color: var(--accent); font-weight: 400; }
+[data-theme="terminal"] .content-inner h3::before { content: "### "; color: var(--accent); font-weight: 400; }
+[data-theme="terminal"] .content-inner h4::before { content: "#### "; color: var(--accent); font-weight: 400; }
+
+/* h1, h2 get a dashed underline */
+[data-theme="terminal"] .content-inner h1::after,
+[data-theme="terminal"] .content-inner h2::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 10px;
+  background: var(--border);
+}
+
+/* Inline code */
+[data-theme="terminal"] .content-inner code {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+/* Code blocks — show line numbers, accent left border */
+[data-theme="terminal"] .code-block-wrapper {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  font-family: var(--font-mono);
+}
+
+[data-theme="terminal"] .code-block-header {
+  background: var(--accent-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="terminal"] .code-lang {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+[data-theme="terminal"] .code-lang::before {
+  content: "\276F ";
+  color: var(--accent);
+}
+
+[data-theme="terminal"] .code-copy-btn {
+  font-family: var(--font-mono) !important;
+}
+
+[data-theme="terminal"] .code-copy-btn::before { content: "["; }
+[data-theme="terminal"] .code-copy-btn::after { content: "]"; }
+
+/* Line numbers visible in terminal */
+[data-theme="terminal"] .code-line-numbers {
+  display: block;
+  padding: 12px 0;
+  text-align: right;
+  user-select: none;
+  border-right: 1px solid var(--border);
+  min-width: 44px;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.75;
+}
+
+[data-theme="terminal"] .code-line-numbers span {
+  display: block;
+  padding: 0 10px;
+}
+
+[data-theme="terminal"] .code-block-body {
+  display: flex !important;
+}
+
+[data-theme="terminal"] .code-block-body pre {
+  border-left: 3px solid var(--accent) !important;
+}
+
+/* Blockquote — plain left-bar (real alerts are handled by .gh-alert below) */
+[data-theme="terminal"] .content-inner blockquote {
+  border-left: 2px solid var(--accent);
+  background: var(--accent-bg);
+  border-radius: 0;
+  padding: 12px 18px;
+  font-style: normal;
+}
+
+/* Lists — arrow markers */
+[data-theme="terminal"] .content-inner ul { list-style: none; padding-left: 0; }
+[data-theme="terminal"] .content-inner ul li { padding-left: 1.8em; position: relative; }
+[data-theme="terminal"] .content-inner ul li::before {
+  content: "\2192";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+[data-theme="terminal"] .content-inner ol li::marker {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Links */
+[data-theme="terminal"] .content-inner a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-border);
+  transition: border-color 0.2s;
+}
+[data-theme="terminal"] .content-inner a:hover {
+  border-bottom-style: solid;
+}
+
+/* Table — mono-styled */
+[data-theme="terminal"] .content-inner table {
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+[data-theme="terminal"] .content-inner th {
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-bottom: 1px solid var(--accent-border);
+  font-size: 0.78rem;
+}
+
+/* HR — terminal style * * * */
+[data-theme="terminal"] .content-inner hr {
+  border: none;
+  margin: 36px 0;
+  height: auto;
+  background: none;
+  position: relative;
+}
+[data-theme="terminal"] .content-inner hr::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--border);
+}
+[data-theme="terminal"] .content-inner hr::after {
+  content: "* * *";
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 10px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+/* Bold text */
+[data-theme="terminal"] .content-inner strong { color: var(--ink); }
+
+/* Active heading cursor */
+[data-theme="terminal"] .content-inner .heading-active {
+  background: var(--active-bg);
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+  margin-left: -15px;
+  border-radius: 0;
+  transition: background 150ms ease;
+}
+
+/* Frontmatter card */
+[data-theme="terminal"] .frontmatter-card {
+  border: 1px dashed var(--accent-border);
+  border-radius: 0;
+  background: var(--surface-elevated);
+  font-family: var(--font-mono);
+}
+[data-theme="terminal"] .frontmatter-key {
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+[data-theme="terminal"] .frontmatter-value {
+  font-family: var(--font-mono);
+}
+
+/* Mermaid card */
+[data-theme="terminal"] .mermaid-card {
+  border: 1px dashed var(--accent-border);
+  border-radius: 0;
+  background: var(--surface-elevated);
+}
+[data-theme="terminal"] .mermaid-error {
+  font-family: var(--font-mono);
+}
+
+/* Sidebar — > prefix on links */
+[data-theme="terminal"] .sidebar .toc-link::before {
+  content: "> ";
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+}
+[data-theme="terminal"] .sidebar .toc-link.active::before {
+  color: var(--active-text);
+}
+
+/* GitHub alerts — dashed box, [!TYPE] bracketed label, phosphor hues */
+[data-theme="terminal"] .gh-alert-note      { --alert-bg: var(--alert-note-bg);      --alert-border: var(--alert-note-border);      --alert-ink: var(--alert-note-ink); }
+[data-theme="terminal"] .gh-alert-tip       { --alert-bg: var(--alert-tip-bg);       --alert-border: var(--alert-tip-border);       --alert-ink: var(--alert-tip-ink); }
+[data-theme="terminal"] .gh-alert-warning   { --alert-bg: var(--alert-warning-bg);   --alert-border: var(--alert-warning-border);   --alert-ink: var(--alert-warning-ink); }
+[data-theme="terminal"] .gh-alert-caution   { --alert-bg: var(--alert-caution-bg);   --alert-border: var(--alert-caution-border);   --alert-ink: var(--alert-caution-ink); }
+[data-theme="terminal"] .gh-alert-important { --alert-bg: var(--alert-important-bg); --alert-border: var(--alert-important-border); --alert-ink: var(--alert-important-ink); }
+
+[data-theme="terminal"] .gh-alert {
+  margin: 20px 0;
+  padding: 12px 16px;
+  background: var(--alert-bg);
+  border: 1px dashed var(--alert-border);
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+[data-theme="terminal"] .gh-alert-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--alert-ink);
+}
+[data-theme="terminal"] .gh-alert-label::before { content: "[!"; color: var(--alert-ink); }
+[data-theme="terminal"] .gh-alert-label::after  { content: "]";  color: var(--alert-ink); }
+[data-theme="terminal"] .gh-alert-icon { display: none; }
+[data-theme="terminal"] .gh-alert > p { margin: 0 0 8px 0; }
+[data-theme="terminal"] .gh-alert > p:last-child { margin-bottom: 0; }

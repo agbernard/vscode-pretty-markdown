@@ -1,0 +1,7 @@
+out/
+dist/
+node_modules/
+vendor/
+.vscode-test/
+*.vsix
+.compound-engineering/*.local.yaml
