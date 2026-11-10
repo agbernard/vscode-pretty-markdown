@@ -4,6 +4,10 @@
   "description": "Beautiful markdown preview with multiple themes, dark/light toggle, and sidebar table of contents navigation.",
   "version": "0.0.1",
   "publisher": "abernard",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agbernard/vscode-pretty-markdown"
+  },
   "license": "MIT",
   "icon": "media/icon.png",
   "engines": {
