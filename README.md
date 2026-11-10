@@ -139,7 +139,7 @@ Configure fonts and sizes via VS Code settings:
 
 1. Open any `.md` file
 2. Use one of:
-   - **Keyboard**: `Cmd+Shift+V` (Mac) / `Ctrl+Shift+V` (Windows/Linux)
+   - **Keyboard**: `Cmd+Shift+R` (Mac) / `Ctrl+Shift+V` (Windows/Linux)
    - **Command Palette**: `Cmd+Shift+P` > `Pretty Markdown: Open Preview`
 
 ### Switch Theme
@@ -171,7 +171,7 @@ Configure fonts and sizes via VS Code settings:
 
 | Shortcut | Action |
 | --- | --- |
-| `Cmd+Shift+V` | Open preview |
+| `Cmd+Shift+R` | Open preview |
 | `Cmd+K` or `/` | Search in preview |
 | `Enter` | Next search match |
 | `Shift+Enter` | Previous search match |
