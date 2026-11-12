@@ -433,6 +433,23 @@ export class PreviewPanel {
       transition: width 0.3s ease, min-width 0.3s ease, background 0.3s;
     }
 
+    .sidebar-resizer {
+      width: 5px;
+      margin-left: -3px;
+      margin-right: -2px;
+      height: 100vh;
+      cursor: col-resize;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 5;
+      background: transparent;
+      transition: background 0.15s;
+    }
+    .sidebar-resizer:hover, .sidebar-resizer.dragging { background: var(--border); }
+    .sidebar-resizer.hidden { display: none; }
+    body.resizing { cursor: col-resize; user-select: none; }
+    body.resizing .sidebar { transition: none; }
+
     .sidebar.collapsed {
       width: 44px;
       min-width: 44px;
@@ -1162,6 +1179,7 @@ export class PreviewPanel {
     </div>
     <div class="collapsed-dots" id="collapsedDots" style="display: none;"></div>
   </nav>
+  <div class="sidebar-resizer" id="sidebarResizer" title="Drag to resize"></div>
 
   <main class="content" id="contentArea">
     <div class="toolbar">
@@ -1236,6 +1254,9 @@ export class PreviewPanel {
     }
 
     const vscode = acquireVsCodeApi();
+    function saveState(patch) {
+      vscode.setState(Object.assign({}, vscode.getState() || {}, patch));
+    }
     const html = document.documentElement;
     const contentArea = document.getElementById('contentArea');
     const sidebar = document.getElementById('sidebar');
@@ -1401,6 +1422,41 @@ export class PreviewPanel {
       collapsedDots.style.display = isCollapsed ? 'flex' : 'none';
       sidebarToggle.innerHTML = isCollapsed ? '&#9776;' : '&#10005;';
       sidebarToggle.title = isCollapsed ? 'Show navigation' : 'Hide navigation';
+      sidebarResizer.classList.toggle('hidden', isCollapsed);
+    });
+
+    // ===== Sidebar resize =====
+    const sidebarResizer = document.getElementById('sidebarResizer');
+    const MIN_SIDEBAR = 160;
+    function clampSidebar(w) {
+      return Math.max(MIN_SIDEBAR, Math.min(w, Math.floor(window.innerWidth * 0.6)));
+    }
+    function applySidebarWidth(w) {
+      document.documentElement.style.setProperty('--sidebar-width', clampSidebar(w) + 'px');
+    }
+    (function () {
+      const saved = vscode.getState();
+      if (saved && saved.sidebarWidth) applySidebarWidth(saved.sidebarWidth);
+    })();
+    sidebarResizer.addEventListener('mousedown', (e) => {
+      if (isCollapsed) return;
+      e.preventDefault();
+      sidebarResizer.classList.add('dragging');
+      document.body.classList.add('resizing');
+      const onMove = (ev) => applySidebarWidth(ev.clientX);
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        sidebarResizer.classList.remove('dragging');
+        document.body.classList.remove('resizing');
+        saveState({ sidebarWidth: Math.round(sidebar.getBoundingClientRect().width) });
+      };
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+    sidebarResizer.addEventListener('dblclick', () => {
+      document.documentElement.style.removeProperty('--sidebar-width');
+      saveState({ sidebarWidth: null });
     });
 
     // ===== IntersectionObserver for scroll spy =====
@@ -1423,7 +1479,7 @@ export class PreviewPanel {
             updateTocActive(newId);
             updateProgress(newId);
             updateCollapsedDots(newId);
-            vscode.setState({ activeHeadingId: newId });
+            saveState({ activeHeadingId: newId });
           }
         }
       },
@@ -1449,7 +1505,7 @@ export class PreviewPanel {
       const activeTocLink = document.querySelector('.toc-link[data-id="' + activeId + '"]');
       if (activeTocLink) activeTocLink.scrollIntoView({ block: 'nearest' });
       // Persist cursor
-      vscode.setState({ activeHeadingId: activeId });
+      saveState({ activeHeadingId: activeId });
       // Smooth scroll to heading with suppression
       isNavigating = true;
       navigateTo(activeId);
@@ -1484,7 +1540,7 @@ export class PreviewPanel {
       updateTocActive(activeId);
       updateProgress(activeId);
       updateCollapsedDots(activeId);
-      vscode.setState({ activeHeadingId: activeId });
+      saveState({ activeHeadingId: activeId });
     })();
 
     function updateTocActive(id) {
